@@ -84,8 +84,8 @@
 
           //OR
 
-          //console.log(this.getName() + " took " heroDamage + "damage");
-        //  console.log(monster.getName() + " took " monsterDamage + "damage");
+          console.log(this.getName() + " took " + heroDamage + "damage");
+          console.log(monster.getName() + " took " + monsterDamage + "damage");
       }
 
       /*  Give the Hero object another method named "fight" that takes as a parameter an array of LivingThing objects
@@ -99,15 +99,12 @@
           while (arrayOfMonsters[i].isAlive() && this.isAlive()){ //condition
             this.attack(arrayOfMonsters[i]);
             if(!this.isAlive() == false){break;}
-
-            }
-
           }
           }
         }
       }
-
-      let hero = new Hero("superman", 100);
+}
+      let Hero1 = new Hero("superman", 100);
       //console.log(hero.isAlive())
 
       let Rat = new livingThing("rat", 5);
@@ -120,16 +117,16 @@
     //The code below should work when you are done
     console.log("A hero emerges!");
 
-    console.log("The noble " + hero.getName() + " has vowed to defeat the monsters and save the realm");
+    console.log("The noble " + Hero1.getName() + " has vowed to defeat the monsters and save the realm");
     console.log("Will they be victorious?");
 
-    hero.fight(monsters);
+    Hero1.fight(monsters);
 
-    if (hero.isAlive()) {
-        console.log("The hero, " + hero.getName() + ", prevailed!");
+    if (Hero1.isAlive()) {
+        console.log("The hero, " + Hero1.getName() + ", prevailed!");
     }
     else {
-        console.log(hero.getName() + " was bested by the monsters. We are doomed");
+        console.log(Hero1.getName() + " was bested by the monsters. We are doomed");
     }
 
 }());
