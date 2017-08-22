@@ -40,7 +40,82 @@
     // Put your code here!
     ///////////////////////////
 
-    
+    function getRandomInt(min, max) { //this just ensures we get a whole number - taken from MDN documentation.
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+    function livingThing(monsterName, monsterHealth) {
+      let name = monsterName;
+      let health = monsterHealth;
+
+      this.isAlive = function(){
+        return health > 0
+      }
+
+      this.getName = function(){
+        return name;
+      }
+
+      this.getHealth = function(){ //no parameter because you don't need anything to make a decision. Just return the health #.
+        return health;
+      }
+      this.setHealth = function(newHealth){ //need a parameter here to set the new value to.
+        health = newHealth;
+      }
+      }
+
+      function Hero(heroName, heroHealth){ //this is the hero class
+        livingThing.call(this, heroName, heroHealth) //using the same values as monsterName and monsterHealth // "call" is what extends it.
+
+
+        this.attack = function(monster){ // we are now naming it Monster. You could call it "placeholder", because you'll pass in another value later. Could be equivalent to "let whatever I receive be called 'monster'"
+        //random number between 0 and 10 and the damage taken in the attack
+          let heroDamage = getRandomIntInclusive(0, 10);
+          let monsterDamage = getRandomIntInclusive(0, 10);
+          //decrease he health of the living thing with the random number generator
+          monster.setHealth(monster.getHealth() - monsterDamage);
+          //decrease the health of the hero (this) with the randon number generator
+          this.setHealth(this.getHealth() - heroDamage);
+
+          //console.log("The hero took " + heroDamage + "damage");
+          //console.log("The monster took " + monsterDamage + "damage");
+
+          //OR
+
+          //console.log(this.getName() + " took " heroDamage + "damage");
+        //  console.log(monster.getName() + " took " monsterDamage + "damage");
+      }
+
+      /*  Give the Hero object another method named "fight" that takes as a parameter an array of LivingThing objects
+        * and does the following:
+        *  - For each LivingThing object in the array, call the "attack" method so the hero can attack the monster.
+        *     - But, don't attack if the LivingThing is already dead!
+        *  - Repeat the process until all the monsters or the hero is dead.*/
+
+        this.fight = function(arrayOfMonsters){ //arrayOfMonsters can be called placeholder, because we are going to call in another value later to go in here.
+          for(let i=0; i< arrayOfMonsters.length; i++){ //how many it iterates
+          while (arrayOfMonsters[i].isAlive() && this.isAlive()){ //condition
+            this.attack(arrayOfMonsters[i]);
+            if(!this.isAlive() == false){break;}
+
+            }
+
+          }
+          }
+        }
+      }
+
+      let hero = new Hero("superman", 100);
+      //console.log(hero.isAlive())
+
+      let Rat = new livingThing("rat", 5);
+      let Goblin = new livingThing("goblin", 30);
+      let Ogre = new livingThing("ogre", 80);
+
+      let monsters = [Rat, Goblin, Ogre, Hero]
+
 
     //The code below should work when you are done
     console.log("A hero emerges!");
@@ -57,4 +132,4 @@
         console.log(hero.getName() + " was bested by the monsters. We are doomed");
     }
 
-})();
+}());

@@ -5,7 +5,7 @@
  * The method should return a boolean value of true if the value of the "health" property is
  * greater than zero, otherwise it should return false.
  *
- */
+ *///to be public, needs to use "this"
 
 (function(){
 
@@ -16,7 +16,26 @@
     // Put your code here!
     ///////////////////////////
 
-    
+        function livingThing(name, health) { //describes what it looks like
+          this.name = name;
+          this.health = health;
+
+          this.isAlive = function(){ //the "this" keyword allows us to access it because it's attached to the that object. If you don't use "this" you could not us "Rat.isAlive()".
+            return (this.health > 0)
+          // DOES THE SAME AS BELOW
+          // if)this.health > 0){
+          //  return true;
+          //  }else {
+          //  return false;
+          }
+          }
+
+        let Rat = new livingThing("rat", 0);
+        let Goblin = new livingThing("goblin", 30);
+        let Ogre = new livingThing("ogre", 80);
+
+        let monsters = [Rat, Goblin, Ogre]
+
     //The code below should work when you are done
     console.log("Are the monsters alive?");
 
@@ -24,6 +43,7 @@
     //not compatable before IE edge
     //@see http://www.benmvp.com/learning-es6-for-of-loop/
     //@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+    //question mark - condition on left side is true, condition on right side is false.
     console.log("ES6 for...in");
     for (let monster of monsters) {
         console.log(monster.name + " is " + (monster.isAlive() ? "alive" : "dead") );
@@ -40,7 +60,3 @@
     }
 
 })();
-    
-
-
-    

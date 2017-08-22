@@ -22,8 +22,30 @@
     // Put your code here!
     ///////////////////////////
 
-    
-    
+    function livingThing(monsterName, monsterHealth) { //have to change the name of the parameters, because "name" and "health" have already been used.
+      let name = monsterName; //replace "this." from name and health with var and cannot be accessed outside so that it cannot be arbitrarily changed. Now, you have to create a getter method to be able top access this.
+      let health = monsterHealth;
+
+      this.isAlive = function(){
+        return health > 0 //remove "this." from health
+      }
+
+      this.getName = function (){ //GETTER method becuase it's private now
+        return name;
+      }
+
+      this.getHealth = function (){ //GETTER method
+        return health;
+      }
+      }
+
+    let Rat = new livingThing("rat", 5);
+    let Goblin = new livingThing("goblin", 30);
+    let Ogre = new livingThing("ogre", 80);
+
+    let monsters = [Rat, Goblin, Ogre]
+
+
     //The code below should work when you are done
     console.log("Monsters!");
 
@@ -33,7 +55,7 @@
     //@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
     console.log("ES6 for...in");
     for (let monster of monsters) {
-        console.log(monster.name + ": " + monster.health);
+        console.log(monster.getName() + ": " + monster.getHealth());
     }
 
     //just a spacer
@@ -43,7 +65,8 @@
     //@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
     console.log("for loop for support before ES6");
     for (let i=0; i < monsters.length; i++) {
-        console.log(monsters[i].name + ": " + monsters[i].health);
+        //console.log(monsters[i].name + ": " + monsters[i].health);
+        console.log(monsters[i].getName() + ": " + monsters[i].getHealth());
     }
 
 })();

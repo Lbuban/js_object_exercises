@@ -1,7 +1,7 @@
 /**
  * Let's create some objects!
  *
- * Define a an object below with the name "LivingThing".
+ * Define an object below with the name "LivingThing".
  * Give the object a constructor that takes two properties called "name" and "health".
  *
  * Once you have your object defined, let's create some living things.
@@ -34,16 +34,26 @@
     // Put your code here!
     ///////////////////////////
 
-    
+    function livingThing(name, health) {   //blueprint (constructor function)
+      this.name = name;
+      this.health = health;
+    }
+    //3 new objects - use "new" everytime you instantiate something want to tell the system not to treat it as a function, but an object.
+    let Rat = new livingThing("rat", 5);
+    let Goblin = new livingThing("goblin", 30);
+    let Ogre = new livingThing("ogre", 80);
+
+    let monsters = [Rat, Goblin, Ogre] //an array of objects.
+
     //The code below should work when you are done
     console.log("Monsters!");
 
-    //for...of loop supported in ES6
+    //for...of loop supported in ES6, use if you're writing in AngularJS
     //not compatable before IE edge
     //@see http://www.benmvp.com/learning-es6-for-of-loop/
     //@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
     console.log("ES6 for...in");
-    for (let monster of monsters) {
+    for (let monster of monsters) { //This is a For Of loop. "monster" is a temporary placeholder for one of the items in the array. Declare by using "let monster" as a singular version of monsters array.
         console.log(monster.name + ": " + monster.health);
     }
 
@@ -54,11 +64,7 @@
     //@see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
     console.log("for loop for support before ES6");
     for (let i=0; i < monsters.length; i++) {
-        console.log(monsters[i].name + ": " + monsters[i].health);
+        console.log(monsters[i].name + ": " + monsters[i].health); //use "i" to traverse the loop, "i" can be a, y, x, etc.
     }
 
 })();
-    
-
-
-    
